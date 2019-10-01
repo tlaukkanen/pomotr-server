@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Pomotr.Server.Database;
+using GraphiQl;
 
 namespace Pomotr.Server
 {
@@ -28,8 +29,9 @@ namespace Pomotr.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMvc(options=>options.EnableEndpointRouting=false);
-            services.AddDbContext<ApplicationDbContext>(context=>{
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddDbContext<ApplicationDbContext>(context =>
+            {
                 context.UseInMemoryDatabase("Pomotr");
             });
         }
@@ -52,6 +54,7 @@ namespace Pomotr.Server
             //{
             //    endpoints.MapControllers();
             //});
+            app.UseGraphiQl("/graphql");
             app.UseMvc(); //options => options.EnableEndpointRouting = false);
         }
     }
