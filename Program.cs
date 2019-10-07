@@ -15,7 +15,7 @@ namespace Pomotr.Server
     {
         public static void Main(string[] args)
         {
-            IWebHost host = CreateHostBuilder(args).Build();
+            var host = CreateHostBuilder(args).Build();
 
             using (IServiceScope scope = host.Services.CreateScope())
             {
