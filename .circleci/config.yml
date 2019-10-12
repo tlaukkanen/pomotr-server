@@ -16,4 +16,6 @@ jobs:
       - run:
           name: Test
           command:
-            dotnet test
+            dotnet test --logger "junit;LogFilePath=../test-results/results.xml"
+      - store_test_results:
+          path: test-results
