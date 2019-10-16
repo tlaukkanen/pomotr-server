@@ -6,7 +6,7 @@ namespace Pomotr.Server.Database
     {
         public string Id { get; set; }
 
-        //public User User { get; set; }
+        public User User { get; set; }
 
         public string Description { get; set; }
 

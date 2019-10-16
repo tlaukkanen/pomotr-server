@@ -8,6 +8,6 @@ namespace Pomotr.Server.Database {
 
         public string Email { get; set; }
 
-        //public List<Task> CompletedTasks { get; set; }
+        public List<Task> CompletedTasks { get; set; }
     }
 }

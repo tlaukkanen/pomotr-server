@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="graphiql" Version="1.2.0" />
     <PackageReference Include="GraphQL" Version="3.0.0-preview-1268" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.0.0" />
   </ItemGroup>

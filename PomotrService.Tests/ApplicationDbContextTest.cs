@@ -21,10 +21,8 @@ namespace PomotrService.Tests
             {
                 var users = db.Users;
                 var errands = db.Errands;
-                //Assert.Equal(,1);
-
+                Assert.True( errands!=null );
             }
-            
         }
     }
 }

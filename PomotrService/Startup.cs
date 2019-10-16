@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Pomotr.Server.Database;
 using GraphiQl;
 
@@ -29,7 +30,9 @@ namespace Pomotr.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt=>opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddDbContext<ApplicationDbContext>(context =>
             {
                 context.UseInMemoryDatabase("Pomotr");

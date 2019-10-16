@@ -21,11 +21,23 @@ namespace Pomotr.Server
             {
                 ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                /*context.Errands.AddRange(
+                context.Errands.AddRange(
                   new Errand
                   {
                       Id = Guid.NewGuid().ToString(),
                       Name = "Take out the trash",
+                      ValuePoints = 2,
+                  },
+                  new Errand
+                  {
+                      Id = Guid.NewGuid().ToString(),
+                      Name = "Make your bed",
+                      ValuePoints = 1,
+                  },
+                  new Errand
+                  {
+                      Id = Guid.NewGuid().ToString(),
+                      Name = "Clean your room",
                       ValuePoints = 2,
                   },
                   new Errand
@@ -37,10 +49,16 @@ namespace Pomotr.Server
                   new Errand
                   {
                       Id = Guid.NewGuid().ToString(),
-                      Name = "Move the lawn",
+                      Name = "Mow the lawn",
                       ValuePoints = 5
+                  },
+                  new Errand
+                  {
+                      Id = Guid.NewGuid().ToString(),
+                      Name = "Wash the car",
+                      ValuePoints = 8
                   }
-                );*/
+                );
 
                 context.SaveChanges();
             }

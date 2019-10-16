@@ -10,7 +10,7 @@ namespace Pomotr.Server.GraphQL
         public UserQuery(ApplicationDbContext db)
         {
             Name = "Query";
-            /*Field<UserType>(
+            Field<UserType>(
                 "User",
                 arguments: new QueryArguments(
                     new QueryArgument<IdGraphType>
@@ -24,21 +24,30 @@ namespace Pomotr.Server.GraphQL
                     var id = context.GetArgument<string>("id");
                     var user = db
                         .Users
-                        //.Include(a => a.CompletedTasks)
+                        .Include(a => a.CompletedTasks)
                         .FirstOrDefault(i => i.Id == id);
                     return user;
                 }
-            );*/
+            );
  
             Field<ListGraphType<UserType>>(
                 "Users",
                 resolve: context =>
                 {
-                    var users = db.Users;//.Include(a => a.CompletedTasks);
+                    var users = db.Users.Include(a => a.CompletedTasks);
                     return users;
                 }
-            );
-            
+            );  
+
+            Field<ListGraphType<ErrandType>>(
+                "Errands",
+                resolve: context =>
+                {
+                    var users = db.Errands;
+                    return users;
+                }
+            );  
+
         }
     }
 }
