@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Pomotr.Server.Database;
 using GraphiQl;
+using GraphQL;
 
 namespace Pomotr.Server
 {

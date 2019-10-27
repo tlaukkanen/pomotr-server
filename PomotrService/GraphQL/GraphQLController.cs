@@ -20,7 +20,8 @@ namespace Pomotr.Server.GraphQL
 
       var schema = new Schema
       {
-        Query = new UserQuery(_db)
+        Query = new UserQuery(_db),
+        Mutation = new GraphQLMutation(_db)
       };
 
       var result = await new DocumentExecuter().ExecuteAsync(_ =>
