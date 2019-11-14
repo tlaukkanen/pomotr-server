@@ -10,5 +10,13 @@ Technologies used in this service:
 
 - C# .NET Core
 - Entity Framework
-- GraphQL & GraphiQL
+- GraphQL & GraphiQL UI
 
+## Compile & Run
+
+You can compile and run the service with the following commands:
+
+```
+> dotnet build
+> dotnet run --project PomotrServer/PomotrServer.csprojs
+```

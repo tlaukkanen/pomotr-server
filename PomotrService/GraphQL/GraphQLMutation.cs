@@ -16,7 +16,22 @@ namespace Pomotr.Server.GraphQL {
                     var task = context.GetArgument<Task>("task");
                     task.Id = Guid.NewGuid().ToString();
                     data.Tasks.Add(task);
+                    data.SaveChanges();
                     return task;
+                }
+            );
+
+            Field<ErrandType>(
+                "createErrand",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<ErrandTypeInput>> { Name = "errand" }
+                ),
+                resolve: context => {
+                    var errand = context.GetArgument<Errand>("errand");
+                    errand.Id = Guid.NewGuid().ToString();
+                    data.Errands.Add(errand);
+                    data.SaveChanges();
+                    return errand;
                 }
             );
         }
