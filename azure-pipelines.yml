@@ -30,9 +30,11 @@ stages:
           $(tag)
     - script: |
         export id=$(docker images --filter "label=test=true" -q | head -1)
+        echo $id
         docker create --name testcontainer $id    
-        docker cp $(tag):/build/test-results/test-results.xml ./testresults
-        docker cp $(tag):/build/test-results/coverage.xml ./testresults/coverage
+        docker cp testcontainer:/build/test-results/test-results.xml ./testresults
+        docker cp testcontainer:/build/test-results/coverage.xml ./testresults/coverage
+        docker rm testcontainer
       displayName: 'Extract test results'
     - task: PublishTestResults@2
       inputs:
