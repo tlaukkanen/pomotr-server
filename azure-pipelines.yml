@@ -32,6 +32,7 @@ stages:
         export id=$(docker images --filter "label=test=true" -q | head -1)
         echo $id
         mkdir ./testresults
+        mkdir ./testresults/coverage
         docker create --name testcontainer $id    
         docker cp testcontainer:/build/test-results/test-results.xml ./testresults
         docker cp testcontainer:/build/test-results/coverage.xml ./testresults/coverage
