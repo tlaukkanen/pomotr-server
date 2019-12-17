@@ -10,6 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  imageName: 'pomotr:$(build.buildNumber)'
 
 stages:
 - stage: Build
@@ -28,6 +29,8 @@ stages:
         tags: |
           $(tag)
     - script: |
+        export id=$(docker images --filter "label=test=true" -q | head -1)
+        docker create --name testcontainer $id    
         docker cp $(tag):/test-results/test-results.xml ./testresults
         docker cp $(tag):/test-results/coverage.xml ./testresults
       displayName: 'Extract test results'
