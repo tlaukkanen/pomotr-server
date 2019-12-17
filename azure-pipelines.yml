@@ -31,8 +31,8 @@ stages:
     - script: |
         export id=$(docker images --filter "label=test=true" -q | head -1)
         docker create --name testcontainer $id    
-        docker cp $(tag):/test-results/test-results.xml ./testresults
-        docker cp $(tag):/test-results/coverage.xml ./testresults
+        docker cp $(tag):/build/test-results/test-results.xml ./testresults
+        docker cp $(tag):/build/test-results/coverage.xml ./testresults/coverage
       displayName: 'Extract test results'
     - task: PublishTestResults@2
       inputs:
@@ -44,7 +44,7 @@ stages:
     - task: PublishCodeCoverageResults@1
       inputs:
         codeCoverageTool: 'cobertura'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.xml'
         reportDirectory: '$(System.DefaultWorkingDirectory)/testresults/coverage/reports'
       displayName: 'Publish coverage reports'
 
