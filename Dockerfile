@@ -19,7 +19,7 @@ RUN dotnet publish -c Release -o out PomotrApp/PomotrApp.csproj
 LABEL test=true
 
 COPY ./PomotrApp.Tests ./PomotrApp.Tests
-RUN dotnet test --results-directory test-results /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/test-results/coverage.xml ./PomotrApp.Tests/PomotrApp.Tests.csproj
+RUN dotnet test --results-directory ./test-results --logger "trx;LogFileName=test-results.xml" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=../test-results/coverage.xml ./PomotrApp.Tests/PomotrApp.Tests.csproj
 
 # Runtime
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
