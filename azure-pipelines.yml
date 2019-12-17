@@ -37,6 +37,8 @@ stages:
         docker cp testcontainer:/build/test-results/test-results.xml ./testresults
         docker cp testcontainer:/build/test-results/coverage.xml ./testresults/coverage
         docker rm testcontainer
+        ls testresults
+        ls testresults/coverage
       displayName: 'Extract test results'
     - task: PublishTestResults@2
       inputs:
